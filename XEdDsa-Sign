@@ -1,0 +1,48 @@
+// Extended PQC EdDsa Signature
+ [TestMethod]
+ public void UseCase_sign()
+ {
+     SET_INFO();
+     string folder = Environment.GetEnvironmentVariable("Envionment");
+
+     string sin = Environment.GetEnvironmentVariable("TestA");
+     string userTokenPath = @"D:\Examples\" + folder + "\\Token-" + sin + ".json";
+     Fido.FidoProvider fp = new Fido.FidoProvider(userTokenPath);
+     string jwtkn = fp.GetJwToken();
+
+     // Send Secure Messsage
+     byte[] content = Encoding.UTF8.GetBytes("Test");
+     byte[] hashBytes = SHA256.Create().ComputeHash(content);
+
+     // Extract Function endpoint from Device Token
+     Uri _baseUri = new Uri(fp.Audience());
+     // Build funtion endpoint Uri
+     HttpClient _httpClient = new HttpClient();
+     string _relativeUrl = "api/Sign";
+     Uri _uri = new Uri(_baseUri, _relativeUrl);
+     _httpClient.BaseAddress = _baseUri;
+     // Add
+     // Device Signature
+     string shash = Encoding.UTF8.GetString(hashBytes);
+     string ssign = fp.Sign(shash);
+     _httpClient.DefaultRequestHeaders.Add("x-jws-signature", ssign);
+
+     _httpClient.DefaultRequestHeaders.Add("x-hash", Fido.Base64Url.Encode(hashBytes));
+     _httpClient.DefaultRequestHeaders.Add("x-token", fp.GetJwToken());
+     HttpResponseMessage response = _httpClient.GetAsync(_uri).Result;
+     if (response.IsSuccessStatusCode)
+     {
+
+         // Save DER XEdDsa signature 
+         byte[] sign = response.Content.ReadAsByteArrayAsync().Result;
+     }
+     else
+     {
+         // fail
+         string error = response.Content.ReadAsStringAsync().Result;
+         throw new Exception(error);
+     }
+
+
+
+ }
