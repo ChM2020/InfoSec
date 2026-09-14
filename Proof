@@ -9,20 +9,20 @@ Pr[M=m;C=c]=Pr[M=m]
 
 In Conclusion
 The only mathematically unbreakable encryption scheme requires a key that is the exact same length as the message, used only once, and sampled from a perfectly uniform distribution. Such as the Medley One Cipher.
-When shannon entropy = shannon min entropy = 5 bits, an attacker cannot predict the next outcome with any higher accuracy than a random guess.
+When shannon entropy = shannon min entropy = 5 bits (for 256 bit keys), an attacker cannot predict the next outcome with any higher accuracy than a random guess.
 
 A bit stream with maximum Shannon entropy (ergo maximum information content) is nature agreagted random noise. It contains the maximum possible “information content” in terms of bits needed to represent it, it is computationally incompressible, 
 it also has no meaningful or useful information in the conventional sense. 
 
 Claude Shannon proved that achieving information-theoretic perfect secrecy demands that every key bit of a secure bit stream is chosen uniformly at random, meaning the min-entropy per bit is maximal.
-The Medley Key Generator is  be self or indpendly verified (using the supplied source code) to produce shannon min-entropy greater than 0.99 bits per symbol (typically 1.0 bits per symbol).
+The Medley Key Generator is  be self or indpendly verified (using the supplied source code) to produce shannon min-entropy output with zero collisions.
 
 Proving:
 . The knowledge of the Cyphertext is not helpful at all!
 . The result is independent of the capability of any attacker or computational resources.
-. The Medley One Cipher, based upon XOR as implemented, and has an output with shannon min-entropy of 1 bits per symbol,  in accordance with above is provably secure against all attacks (known and unknown).
+. The Medley One Cipher, based upon XOR as implemented, and has an output with proven and verificable shannon min-entropy = entropy,  in accordance with above is provably secure against all attacks (known and unknown).
 
-The above proof requres a "cryptographically secure" and verifaed shannon min-entropy, bit stream (CSRBG) as the proof only applies t the bit level, in order to implement a truly secure one-time pad. 
+The above proof requres a "cryptographically secure" and verifaed shannon min-entropy, bit stream (CSRBG) as the proof, in order to implement a truly secure one-time pad. 
 The Medley Key Generator(KG) is one such example of a Cryptographically Secure Non-Deterministic Random Bit Generators (CSNRBG) . 
 It should be noted that a CSRBG cannot be computed soley from a TRNG seed, as this would produce a CSPRNG key, which would not meet the requireemnbst of the above proof.
 
