@@ -16,7 +16,7 @@ No known funtion f(x) can increase the security or min-entropy or uniform distri
 According to Kerckhoffs's principle:
 . An attacker knows the One Cipher (XOR algorithm) is being used.
 . An attacker intercepts the Ciphertext (C).
-. Despite knowing the exact math and the One Cipher vernan cipher, the attacker cannot learn anything about the Plaintext (P) without the Key (K).
+. Despite knowing the exact f(x) as the One Cipher (vernan cipher), the attacker cannot learn anything about the Plaintext (P) without the Key (K).
  Knowing the One Cipher algorithm (Kerckhoffs's Principle) gives the attacker no advantage.
 
 A bit stream with maximum Shannon entropy (ergo maximum information content) is nature agregated random noise. It contains the maximum possible “information content” in terms of bits needed to represent it, it is computationally incompressible, 
