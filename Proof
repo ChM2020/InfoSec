@@ -1,3 +1,4 @@
+Always Self Verify all cryptographic algorithms and ciphers before use.
 The Information Theretic Security-Proof, for the Medly-KMS, and One Cipher is based upon imformation theory as defined via the following six principles:
 
 1. Theoretical Proof...
@@ -116,8 +117,9 @@ Example Results
   AESGCM Collisions 3.0000
   Medley One Cipher Collisions 0.0000
 
-If any cipher claims to be secure, the tested output using the above funtion, shall be greater than 0.99 bits per symbol to be considered secure.
-Scores under 0.99 reveal hidden patterns, biases, or repeating sequences that algorithms or bad actors can exploit, a value of 0.83 to 0.96 shows how week AES key schedules are today.
+If any cipher claims to be secure, the tested output using the above funtion, shall have shannon min-entropy within 90% of shannon entropy to be considered uniform and hence secure.
+Scores which deviate by more than 90% may reveal hidden patterns, biases, or repeating sequences that algorithms or bad actors can exploit.
+AES has a 50% to 60%a deviation in values today well in excess of 10% defined herein which demonstartes the proven weekness or deviation from uniform outpout of the AES key schedule and algorithm design.
 
 3. Additional considerations.
 a) Malleability and active attack vectors
